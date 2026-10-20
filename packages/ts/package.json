@@ -1,0 +1,12 @@
+{
+  "name": "@htsdk/generator-ts",
+  "dependencies": {
+    "@htsdk/generator-ir": "workspace:*",
+    "@htsdk/generator-core": "workspace:*",
+    "code-block-writer": "^13.0.3"
+  },
+  "devDependencies": {
+    "@htsdk/generator-dsl": "workspace:*",
+    "@types/bun": "^1.4.3"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@htsdk/generator",
+  "workspaces": [
+    "packages/*"
+  ]
+}
