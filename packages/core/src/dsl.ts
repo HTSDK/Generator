@@ -1,4 +1,4 @@
-import { Literals, Operation, OperationRequest, Primitives, Resource, SDK, Type } from "@htsdk/generator-ir"
+import { Literals, Operation, OperationRequest, Primitives, Resource, SDK, Type } from "./ir"
 
 export const t = {
   array: (items: Type): Type => ({

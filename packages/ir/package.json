@@ -1,6 +1,0 @@
-{
-  "name": "@htsdk/generator-ir",
-  "exports": {
-    ".": "./index.ts"
-  }
-}

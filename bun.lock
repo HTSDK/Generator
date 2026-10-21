@@ -8,34 +8,19 @@
     "packages/core": {
       "name": "@htsdk/generator-core",
     },
-    "packages/dsl": {
-      "name": "@htsdk/generator-dsl",
-      "dependencies": {
-        "@htsdk/generator-ir": "workspace:*",
-      },
-    },
-    "packages/ir": {
-      "name": "@htsdk/generator-ir",
-    },
     "packages/ts": {
       "name": "@htsdk/generator-ts",
       "dependencies": {
         "@htsdk/generator-core": "workspace:*",
-        "@htsdk/generator-ir": "workspace:*",
         "code-block-writer": "^13.0.3",
       },
       "devDependencies": {
-        "@htsdk/generator-dsl": "workspace:*",
         "@types/bun": "^1.4.3",
       },
     },
   },
   "packages": {
     "@htsdk/generator-core": ["@htsdk/generator-core@workspace:packages/core"],
-
-    "@htsdk/generator-dsl": ["@htsdk/generator-dsl@workspace:packages/dsl"],
-
-    "@htsdk/generator-ir": ["@htsdk/generator-ir@workspace:packages/ir"],
 
     "@htsdk/generator-ts": ["@htsdk/generator-ts@workspace:packages/ts"],
 
@@ -47,6 +32,8 @@
 
     "code-block-writer": ["code-block-writer@13.0.3", "", {}, "sha512-Oofo0pq3IKnsFtuHqSF7TqBfr71aeyZDVJ0HpmqB7FBM2qEigL0iPONSCZSO9pE9dZTAxANe5XHG9Uy0YMv8cg=="],
 
-    "undici-types": ["undici-types@8.9.0", "", {}, "sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg=="],
+    "undici-types": ["undici-types@8.12.3", "", {}, "sha512-EXE4ydL3S76dFb27UFjNVZHTyv/TLdATj/KUe29ptdcg6qXL48J2tZ3126E5kICj5jn781OR+XlVH1N6Mz8jbA=="],
+
+    "@types/node/undici-types": ["undici-types@8.9.0", "", {}, "sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg=="],
   }
 }

@@ -1,9 +1,0 @@
-{
-  "name": "@htsdk/generator-dsl",
-  "dependencies": {
-    "@htsdk/generator-ir": "workspace:*"
-  },
-  "exports": {
-    ".": "./index.ts"
-  }
-}
