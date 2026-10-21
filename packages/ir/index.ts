@@ -26,7 +26,8 @@ export type Type = {
 }
 
 export type Resource = {
-  resources?: Resource[]
+  resources?: Record<string, Resource>
+  operations?: Record<string, Operation>
 }
 
 export type OperationRequest = {

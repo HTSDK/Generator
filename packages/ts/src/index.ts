@@ -1,8 +1,9 @@
 import { SDK } from "@htsdk/generator-ir"
 import CodeBlockWriter, { Options } from "code-block-writer"
-import { defineOperation, defineRequest, defineSDK, t } from "@htsdk/generator-dsl"
+import { defineOperation, defineRequest, defineResource, defineSDK, t } from "@htsdk/generator-dsl"
 import { generateAPI } from "./api"
 import { generateClient } from "./client"
+import { generateResources } from "./resources"
 
 export const options: Partial<Options> = {
   newLine: "\r\n",
@@ -22,6 +23,12 @@ export function generate(sdk: SDK): Map<string, string> {
   files.set("api.ts", generateAPI(sdk))
   files.set("client.ts", generateClient(sdk))
   files.set("index.ts", generateIndex(sdk))
+  if (sdk.resources) {
+    const resources = generateResources([], sdk.resources)
+    for (const [key, value] of resources) {
+      files.set(key, value)
+    }
+  }
   return files
 }
 
@@ -34,6 +41,23 @@ const result = generate(
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
+    },
+    resources: {
+      test: defineResource({
+        resources: {
+          another: defineResource({
+            operations: {}
+          })
+        },
+        operations: {
+          test: defineOperation({
+            request: defineRequest({
+              method: "GET",
+              path: "/"
+            })
+          })
+        }
+      })
     },
     operations: {
       lookup: defineOperation({
