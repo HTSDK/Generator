@@ -1,9 +1,9 @@
-import { SDK } from "@htsdk/generator-ir"
 import CodeBlockWriter, { Options } from "code-block-writer"
-import { defineOperation, defineRequest, defineResource, defineSDK, t } from "@htsdk/generator-dsl"
 import { generateAPI } from "./api"
 import { generateClient } from "./client"
 import { generateResources } from "./resources"
+import { SDK } from "@htsdk/generator-core/ir"
+import { defineOperation, defineRequest, defineResource, defineSDK, t } from "@htsdk/generator-core/dsl"
 
 export const options: Partial<Options> = {
   newLine: "\r\n",

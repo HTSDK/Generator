@@ -1,4 +1,4 @@
-import { Operation } from "@htsdk/generator-ir"
+import { Operation } from "@htsdk/generator-core/ir"
 import CodeBlockWriter from "code-block-writer"
 import { options } from "."
 import { casing } from "@htsdk/generator-core"

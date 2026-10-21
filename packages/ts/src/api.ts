@@ -1,5 +1,5 @@
 import CodeBlockWriter from "code-block-writer"
-import { SDK } from "@htsdk/generator-ir"
+import { SDK } from "@htsdk/generator-core/ir"
 import { options } from "."
 
 export function generateAPI(sdk: SDK): string {

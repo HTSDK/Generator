@@ -1,6 +1,8 @@
 {
   "name": "@htsdk/generator-core",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./ir": "./src/ir.ts",
+    "./dsl": "./src/dsl.ts"
   }
 }
