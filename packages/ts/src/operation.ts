@@ -7,18 +7,20 @@ import { parseType } from "./type"
 export function generateOperation(name: string, operation: Operation, useNew?: boolean): string {
   const writer = new CodeBlockWriter(options)
 
-  if (operation.returns === false) {
+  const version = "versions" in operation ? operation.versions[operation.default].request : operation.request
+
+  if (version.returns === false) {
     writer.write("async ")
   }
   writer.write(`${casing("camel", name)}(`)
-  if (operation.request.arguments) {
-    for (const argument of operation.request.arguments) {
-      const i = operation.request.arguments.indexOf(argument)
+  if (version.arguments) {
+    for (const argument of version.arguments) {
+      const i = version.arguments.indexOf(argument)
 
       writer.write(casing("camel", argument.name))
       writer.write(`: ${parseType(argument.type)}`)
 
-      if (i < operation.request.arguments.length - 1) {
+      if (i < version.arguments.length - 1) {
         writer.write(", ")
       }
     }
@@ -28,16 +30,18 @@ export function generateOperation(name: string, operation: Operation, useNew?: b
     if (useNew) {
       writer.writeLine("const api = new API()")
     }
-    writer.write(`${operation.returns === false ? "await" : "return"} ${useNew ? "api" : "this"}.GET`)
-    if (operation.request.returns) {
-      writer.write(`<${parseType(operation.request.returns)}>`)
+    writer.write(`${version.returns === false ? "await" : "return"} ${useNew ? "api" : "this"}.GET`)
+    if (version.type) {
+      writer.write(`<${parseType(version.type)}>`)
     }
     writer.write("(")
-    writer.quote(operation.request.path)
-    if (operation.request.arguments) {
+    if ("params" in version) {
+    }
+    writer.quote(version.path)
+    if (version.arguments) {
       writer.write(", {")
-      for (const argument of operation.request.arguments) {
-        const i = operation.request.arguments.indexOf(argument)
+      for (const argument of version.arguments) {
+        const i = version.arguments.indexOf(argument)
         if (i !== 0) {
           writer.write(",")
         }

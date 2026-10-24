@@ -5,6 +5,12 @@
     "": {
       "name": "@htsdk/generator",
     },
+    "packages/cli": {
+      "name": "@htsdk/generator-cli",
+      "bin": {
+        "htsdk": "./src/index.ts",
+      },
+    },
     "packages/core": {
       "name": "@htsdk/generator-core",
     },
@@ -18,9 +24,19 @@
         "@types/bun": "^1.4.3",
       },
     },
+    "specs": {
+      "name": "@htsdk/generator-specs",
+      "dependencies": {
+        "@htsdk/generator-core": "workspace:*",
+      },
+    },
   },
   "packages": {
+    "@htsdk/generator-cli": ["@htsdk/generator-cli@workspace:packages/cli"],
+
     "@htsdk/generator-core": ["@htsdk/generator-core@workspace:packages/core"],
+
+    "@htsdk/generator-specs": ["@htsdk/generator-specs@workspace:specs"],
 
     "@htsdk/generator-ts": ["@htsdk/generator-ts@workspace:packages/ts"],
 

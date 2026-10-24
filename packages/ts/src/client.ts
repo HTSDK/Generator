@@ -1,10 +1,10 @@
-import { SDK } from "@htsdk/generator-core/ir"
+import { SDKVersion } from "@htsdk/generator-core/ir"
 import CodeBlockWriter from "code-block-writer"
 import { options } from "."
 import { casing } from "@htsdk/generator-core"
 import { generateOperation } from "./operation"
 
-export function generateClient(sdk: SDK): string {
+export function generateClient(sdk: SDKVersion): string {
   const writer = new CodeBlockWriter(options)
 
   writer.write("import { API } from ").quote("./api").newLine()

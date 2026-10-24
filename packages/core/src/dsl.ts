@@ -1,4 +1,12 @@
-import { Literals, Operation, OperationRequest, Primitives, Resource, SDK, Type } from "./ir"
+import {
+  Literals,
+  Operation,
+  OperationRequest,
+  Primitives,
+  Resource,
+  SDK,
+  Type
+} from "./ir"
 
 export const t = {
   array: (items: Type): Type => ({
@@ -32,7 +40,7 @@ export const t = {
   })
 }
 
-export const defineSDK = (sdk: SDK) => sdk
+export const defineSDK = <const V extends string | number>(sdk: SDK<V>) => sdk
 export const defineResource = (resource: Resource) => resource
-export const defineOperation = (operation: Operation) => operation
-export const defineRequest = (request: OperationRequest) => request
+export const defineOperation = <const V extends string | number>(operation: Operation<V>) => operation
+export const defineRequest = <const P extends string>(request: OperationRequest<P>) => request

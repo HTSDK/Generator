@@ -1,8 +1,8 @@
 import CodeBlockWriter from "code-block-writer"
-import { SDK } from "@htsdk/generator-core/ir"
+import { SDKVersion } from "@htsdk/generator-core/ir"
 import { options } from "."
 
-export function generateAPI(sdk: SDK): string {
+export function generateAPI(sdk: SDKVersion): string {
   const writer = new CodeBlockWriter(options)
 
   if (!sdk.url.dynamic) {

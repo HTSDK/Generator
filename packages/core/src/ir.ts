@@ -27,23 +27,32 @@ export type Type = {
 
 export type Resource = {
   resources?: Record<string, Resource>
-  operations?: Record<string, Operation>
+  operations?: Record<string, OperationCollection | OperationVersion>
 }
 
-export type OperationRequest = {
-  method: "GET" | "POST"
-  path: string
+type PathParams<P extends string> = P extends `${string}[${infer Param}]${infer Rest}` ? Param | PathParams<Rest> : never
+
+export type OperationRequest<P extends string = string> = {
+  method: "GET" | "POST" | "DELETE"
+  path: P
   arguments?: ({ name: string, type: Type } & ({ key: string } | { spread: true }))[]
-  returns?: Type
-}
-
-export type Operation = {
+  type?: Type
   description?: string
-  request: OperationRequest
   returns?: boolean
+} & (PathParams<P> extends never ? object : { params: Record<PathParams<P>, { type: Type }> })
+
+export type OperationVersion = {
+  request: OperationRequest
 }
 
-export type SDK = {
+export type OperationCollection<V extends string | number = string | number> = {
+  versions: Record<V, OperationVersion>
+  default: NoInfer<V>
+}
+
+export type Operation<V extends string | number = string | number> = OperationCollection<V> | OperationVersion
+
+export type SDKVersion = {
   url: {
     dynamic: false
     default: string
@@ -55,4 +64,9 @@ export type SDK = {
   headers?: Record<string, string>
   resources?: Record<string, Resource>
   operations?: Record<string, Operation>
+}
+
+export type SDK<V extends string | number = string | number> = {
+  versions: Record<V, SDKVersion>
+  default: NoInfer<V>
 }

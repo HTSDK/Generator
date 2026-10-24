@@ -1,0 +1,6 @@
+{
+  "name": "@htsdk/generator-specs",
+  "dependencies": {
+    "@htsdk/generator-core": "workspace:*"
+  }
+}

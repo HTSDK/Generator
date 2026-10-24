@@ -1,6 +1,7 @@
 {
   "name": "@htsdk/generator",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "specs"
   ]
 }
